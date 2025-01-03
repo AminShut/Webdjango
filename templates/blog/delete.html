@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class='blog-detail'>
+    <h1> Are you sure to delete post <span id='warning-name' class='name'>"{{post.title}}"</span></h1>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Yes" class='delete_Button'>
+        <a class='delete-button' id='no' href='{% url 'blog_list' %}'>no</a>
+    </form>
+</div>
+{% endblock body %}

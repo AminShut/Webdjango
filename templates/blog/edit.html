@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class='blog-edit'>
+    <h1>Edit post <span id='title-post-name' class='name'>"{{post.title}}"</span></h1>
+    <hr>
+    <form action="" method="post">
+        {{form.as_p}}
+        {% csrf_token %}
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,9 @@
+<div id='login'>
+    <h1>Login</h1>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">login</button>
+    </form>
+</div>

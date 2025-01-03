@@ -1,0 +1,187 @@
+body{
+    background-image: url(3395620.jpg);
+    background-size: cover;
+}
+
+#header{
+    background-color:rgb(255, 255, 255);
+    border: 10px solid rgb(106, 106, 106);
+    font-size: xx-large;
+    font-weight: 900;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 15px;
+
+    .header-items{
+        color: black;
+        padding: 7px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border: 4px solid black;
+        text-decoration: none;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 20px;
+        border-radius: 8px;
+    }
+
+    #home{
+        background-color: aquamarine;
+    }
+
+    #blogs{
+        background-color: rgb(153, 0, 255);    
+    }
+
+    #about{
+        background-color: blue;
+    } 
+
+    #login{
+        background-color: rgb(155, 215, 36);
+    }
+}
+
+#home-page{
+    border-left: 3px solid aqua;
+    border-bottom: 3px solid aqua;
+    }
+
+#about-page{
+    border-left: 3px solid blue;
+    border-bottom: 3px solid blue;
+    }
+
+.home-about-page{
+    color: white;
+    padding-left: 20px;
+    margin-top: 30px;
+    padding: 5px;
+}
+
+button{
+    background-color: red;
+    font-size: 130%;
+    font-size: xx-large;
+    font-weight: 900;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.welcome{
+    color: white;
+    font-size: 170%;
+    border-bottom: 7px solid rgb(230, 234, 8);
+    border-top: 7px solid royalblue;
+    border-radius: 18%;
+    padding: 7px;
+}
+
+.name-user{
+    color: rgb(0, 229, 255);
+    font-size: 40px;
+}
+
+.blog-detail{
+    border: 5px solid blue;
+    padding: 10px;
+    background-color: rgb(175, 100, 212);
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.blog-edit{
+    border: 5px solid blue;
+    padding: 10px;
+    background-color: rgb(175, 100, 212);
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.name{
+    font-size: 25px;
+    font-weight: 800;
+    color: rgb(57, 238, 16);;
+}
+
+#warning-name{
+    font-size: 35;
+    color: red;
+}
+
+#title-post-name{
+    font-size: 35;
+}
+
+#blogs-list{
+    background-color: chartreuse;
+    border: 5px solid rgb(0, 136, 255);
+    padding: 7px;
+    border-radius: 5px;
+    font-size: 170%; 
+    margin-top: 20px;
+}
+
+#blogs-list-items{
+    /* text-decoration: none; */
+}
+
+.confirm-button{
+    border: 5px solid greenyellow;
+    background-color: green;
+    border-radius: 10px;
+    font-size: 40px;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+}
+
+.add-button {
+    /* استایل‌های اولیه دکمه */
+    border: 5px solid rgb(192, 69, 245);
+    background-color: rgb(87, 2, 123);
+    border-radius: 10px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+  
+    /* استایل هنگام قرار گرفتن ماوس روی دکمه و خارج شدن از آن */
+    transition: background-color 1s ease; /* انیمیشن تغییر رنگ در یک ثانیه */
+  }
+  
+  .add-button:hover {
+    /* رنگ پس‌زمینه هنگام قرار گرفتن ماوس */
+    background-color: rgb(20, 236, 218); /* رنگ دلخواه خود را در اینجا جایگزین کنید */
+  }
+
+.delete-button{
+    border: 5px solid rgb(255, 0, 0);
+    background-color: rgb(148, 0, 0);
+    border-radius: 10px;
+    font-size: 40px;
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+}
+
+.p{
+    border: 5px solid yellow;
+    background-color: aqua;
+    font-size: 35px;
+    width: 420px;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#no{
+    font-size: 20px;
+    padding: 2px;
+}

@@ -1,0 +1,31 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div id="header">
+  
+        <li><a id='Home' class='header-items' href={% url 'Home_Page' %}>Home</a></li>
+        <li><a id='about' class='header-items' href={% url 'About_Page' %}>About</a></li>
+        <li><a id='blogs' class='header-items' href={% url 'blog_list' %}>The Blogs</a></li>
+  
+        {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                {% csrf_token %}
+            <button type="submit" id='logout' class='header-items'>Logout</button>
+        </form>
+        {% else %}
+        <li><a id='login' class='header-items' href='{% url 'login' %}'>Login</a></li>
+        {% endif %}
+</div>
+
+{% block body %}
+
+{% endblock body %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p id='footer1'>Footer...</p>
+

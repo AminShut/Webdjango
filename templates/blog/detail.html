@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class='blog-detail'>
+    <h1>{{post.title}}</h1>
+    <hr>
+    <h2>{{post.text}}</h2>
+    <br>
+    <h3>written by <span class='name'>{{post.author.username}}</span></h3>
+</div>
+
+{% if user.username == post.author.username %}
+<br>
+<br>
+<a class='confirm-button' href='{% url 'blog_edit' post.id %}'>Edit</a>
+<a class='delete-button' href='{% url 'blog_delete' post.id %}'>Delete</a>
+{% endif %}
+
+{% endblock body %}
