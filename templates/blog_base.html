@@ -1,9 +1,16 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="header">
 
-<div id="header">
-  
         <li><a id='home' class='header-items' href={% url 'Home_Page' %}>Home</a></li>
         <li><a id='about' class='header-items' href={% url 'About_Page' %}>About</a></li>
         <li><a id='blogs' class='header-items' href={% url 'blog_list' %}>The Blogs</a></li>
@@ -16,16 +23,15 @@
         {% else %}
         <li><a id='login' class='header-items' href='{% url 'login' %}'>Login</a></li>
         {% endif %}
-</div>
+    </div>
 
-{% block body %}
+    {% comment %}
+    تو بلاک زیر در فایل های اچ تی ام ال دیگه، بخش های متغیر برای هر صفحه رو میذاری
+    و تو بیرون این بلاک بخش ثابتی که میخوای 
+    {% endcomment %}
+    {% block body %}
+    
+    {% endblock body %}
 
-{% endblock body %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p id='footer1'>Footer...</p>
-
+</body>
+</html>
