@@ -1,13 +1,15 @@
 {% extends "blog_base.html" %}
 
 {% block body %}
+<body id='blogs-body'>
 <div class='blog-detail'>
-    <h1> Are you sure to delete post <span id='warning-name' class='name'>"{{post.title}}"</span></h1>
+    <h1 class='all-texts-blogs'> Are you sure to delete post <span id='warning-name' class='name'>"{{post.title}}"</span></h1>
     <hr>
-    <form action="" method="post">
+    <form action="" method="post" class='all-texts-blogs'>
         {% csrf_token %}
-        <input type="submit" value="Yes" class='delete_Button'>
-        <a class='delete-button' id='no' href='{% url 'blog_list' %}'>no</a>
+        <input type="submit" value="Yes" class='delete-Button-yes-and-no'>
+        <a id='delete-button-no' class='delete-Button-yes-and-no' href='{% url 'blog_list' %}'>No</a>
     </form>
 </div>
+</body>
 {% endblock body %}

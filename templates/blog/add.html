@@ -1,14 +1,16 @@
 {% extends "blog_base.html" %}
 
 {% block body %}
+<body id='blogs-body'>
 <div class='blog-detail'>
-    <h1>Add a new post</h1>
-    <form action="" method="post">
+    <h1 class='all-texts-blogs' id='new-post'>Add a new post</h1>
+    <hr>
+    <form action="" method="post" class='form-edit-and-add'>
         {{form.as_p}}
         {% csrf_token %}
         <br>
         <input type="submit" value="Add">
     </form>
 </div>
-
+</body>
 {% endblock body %}

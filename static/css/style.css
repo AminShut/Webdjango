@@ -1,9 +1,33 @@
-body{
+body {
+    background-image: url(login.jpg);
+    background-size: cover;
+    padding-top: 150px;
+}
+
+#about-body {
+    background-image: url(photo.jpg);
+    background-size: cover;
+    padding-top: 150px;
+}
+
+#blogs-body {
+    background-image: url(blog.jpg);
+    background-size: cover;
+    padding-top: 150px;
+}
+
+#login-body {
     background-image: url(3395620.jpg);
     background-size: cover;
 }
 
-#header{
+#header {
+    position: fixed;
+    top: 0;
+    width: 96.3%;
+    height: 13%;
+    z-index: 1000;
+    margin-top: 10px;
     background-color:rgb(255, 255, 255);
     border: 10px solid rgb(106, 106, 106);
     font-size: xx-large;
@@ -15,8 +39,9 @@ body{
     flex-direction: row;
     justify-content: space-around;
     border-radius: 15px;
+    transition: all 0.5s ease-in-out;
 
-    .header-items{
+    .header-items {
         color: black;
         padding: 7px;
         display: flex;
@@ -29,43 +54,77 @@ body{
         padding-right: 10px;
         margin-top: 20px;
         border-radius: 8px;
+        transition: all 0.6s ease-in-out;
     }
 
-    #home{
-        background-color: aquamarine;
+    #home {
+        background-color: rgb(140, 0, 255);
     }
 
-    #blogs{
-        background-color: rgb(153, 0, 255);    
+    #blogs {
+        background-color: aqua;    
     }
 
-    #about{
-        background-color: blue;
+    #about {
+        background-color:#0059ff;
     } 
 
-    #login{
+    #login {
         background-color: rgb(155, 215, 36);
+    }
+
+    #home:hover {
+        background-color: black;
+        color: #AA00FF;
+        border: 4px solid #AA00FF;
+        box-shadow: 0px 0px 35px  #AA00FF inset ;
+        text-shadow: 0px 0px 30px  #AA00FF ;
+    }
+
+    #about:hover {
+        background-color: black;
+        color: #0ea2f8;
+        border: 4px solid #0ea2f8;
+        box-shadow: 0px 0px 30px  #0ea2f8 inset;
+        text-shadow: 0px 0px 25px  #0ea2f8 ;
+    }
+
+    #blogs:hover {
+        background-color: black;
+        color: cyan;
+        border: 4px solid cyan;
+        box-shadow: 0px 0px 25px  cyan inset;
+        text-shadow: 0px 0px 20px  cyan ;
+    }
+
+    #login:hover {
+        background-color: black;
+        color: rgb(57, 238, 16);
+        border: 4px solid rgb(57, 238, 16);
+        box-shadow: 0px 0px 25px  rgb(57, 238, 16) inset;
+        text-shadow: 0px 0px 20px  rgb(57, 238, 16) ;
     }
 }
 
-#home-page{
-    border-left: 3px solid aqua;
-    border-bottom: 3px solid aqua;
-    }
+#home-page {
+    border-bottom: 3px solid rgb(132, 0, 255);
+}
 
-#about-page{
-    border-left: 3px solid blue;
-    border-bottom: 3px solid blue;
-    }
+#about-page {
+    border-bottom: 3px solid rgb(0, 102, 255);
+}
 
-.home-about-page{
-    color: white;
+.home-about-page {
+    color: rgb(255, 255, 255);
     padding-left: 20px;
     margin-top: 30px;
     padding: 5px;
+    background-color: black;
+    border-radius: 5px;
+    padding-left: 20px;
 }
 
-button{
+#logout {
     background-color: red;
     font-size: 130%;
     font-size: xx-large;
@@ -73,65 +132,78 @@ button{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.welcome{
+#logout:hover {
+    background-color: black;
+    color: red;
+    border: 4px solid red;
+    box-shadow: 0px 0px 20px  red inset;
+    text-shadow: 0px 0px 25px  red ;
+}
+
+.welcome {
+    background-color: black;
     color: white;
     font-size: 170%;
-    border-bottom: 7px solid rgb(230, 234, 8);
-    border-top: 7px solid royalblue;
-    border-radius: 18%;
+    border-bottom: 5px solid   blue;
+    border-top: 5px solid rgb(132, 0, 255);
+    border-radius: 7px;
     padding: 7px;
 }
 
-.name-user{
-    color: rgb(0, 229, 255);
+.name-user {
+    color: cyan;
     font-size: 40px;
 }
 
-.blog-detail{
-    border: 5px solid blue;
+.blog-detail {
+    border: 5px solid cyan;
     padding: 10px;
-    background-color: rgb(175, 100, 212);
-    margin-top: 50px;
+    background-color: black;
+    margin-top: 20px;
     border-radius: 10px;
 }
 
-.blog-edit{
-    border: 5px solid blue;
+.blog-edit {
+    border: 5px solid cyan;
     padding: 10px;
-    background-color: rgb(175, 100, 212);
-    margin-top: 50px;
+    background-color: black;
+    margin-top: 20px;
     border-radius: 10px;
 }
 
-.name{
+.name {
     font-size: 25px;
     font-weight: 800;
     color: rgb(57, 238, 16);;
 }
 
-#warning-name{
+#warning-name {
     font-size: 35;
     color: red;
 }
 
-#title-post-name{
+#title-post-name {
     font-size: 35;
 }
 
-#blogs-list{
-    background-color: chartreuse;
-    border: 5px solid rgb(0, 136, 255);
+#blogs-list {
+    background-color: black;
+    border: 5px solid cyan;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 7px;
     padding: 7px;
     border-radius: 5px;
     font-size: 170%; 
-    margin-top: 20px;
+    margin-top: 35px;
 }
 
-#blogs-list-items{
-    /* text-decoration: none; */
+#blogs-list-items {
+    color: cyan;
 }
 
-.confirm-button{
+.confirm-button {
     border: 5px solid greenyellow;
     background-color: green;
     border-radius: 10px;
@@ -139,30 +211,37 @@ button{
     text-decoration: none;
     padding: 10px;
     color: black;
+    transition: all 0.5s ease-in-out;
+    padding-inline: 33px;
+}
+
+.confirm-button:hover {
+    color: greenyellow;
+    background-color: black;
+    border: 5px solid green;
 }
 
 .add-button {
-    /* استایل‌های اولیه دکمه */
-    border: 5px solid rgb(192, 69, 245);
-    background-color: rgb(87, 2, 123);
+    border: 5px solid black;
+    background-color: deepskyblue;
     border-radius: 10px;
     font-size: 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 
+    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 600;
     text-decoration: none;
     padding: 10px;
     color: black;
-  
-    /* استایل هنگام قرار گرفتن ماوس روی دکمه و خارج شدن از آن */
-    transition: background-color 1s ease; /* انیمیشن تغییر رنگ در یک ثانیه */
+    transition: all 0.5s ease-in-out;
   }
   
-  .add-button:hover {
-    /* رنگ پس‌زمینه هنگام قرار گرفتن ماوس */
-    background-color: rgb(20, 236, 218); /* رنگ دلخواه خود را در اینجا جایگزین کنید */
-  }
+.add-button:hover {
+    color: deepskyblue;
+    background-color: black; 
+    border: 5px solid cyan;
+}
 
-.delete-button{
+.delete-button {
     border: 5px solid rgb(255, 0, 0);
     background-color: rgb(148, 0, 0);
     border-radius: 10px;
@@ -170,18 +249,65 @@ button{
     text-decoration: none;
     padding: 10px;
     color: black;
+    margin-left: 5px;
+    transition: all 0.5s ease-in-out;
 }
 
-.p{
-    border: 5px solid yellow;
-    background-color: aqua;
+.delete-button:hover {
+    color: rgb(255, 0, 0);
+    background-color: black;
+    border: 5px solid rgb(148, 0, 0);
+}
+
+#p-login-first {
+    font-size: 40px;
+    border-bottom: 3px solid cyan;
+    background-color: black;
     font-size: 35px;
-    width: 420px;
-    padding: 5px;
-    border-radius: 20px;
+    padding: 7px;
+    border-radius: 7px;
+    padding-left: 15px;
+    margin-top: 10px;
 }
 
-#no{
-    font-size: 20px;
-    padding: 2px;
+.delete-Button-yes-and-no {
+    background-color: white;
+    font-size: 30px;
+    padding-inline: 10px;
+    cursor: pointer;
+}
+
+#delete-button-no{
+    font-size: 28px;
+    padding: 1px;
+    padding-inline: 18px;
+    border: 1px solid gray;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.all-texts-blogs {
+    color: white;
+}
+
+#p {
+    color: cyan;
+}
+
+.form-edit-and-add {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+#new-post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
