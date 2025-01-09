@@ -3,12 +3,11 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <body id='login-body'>
 <div id='login'>
-    <h1>Login</h1>
-    <hr>
+    <h1 id='login-h1'>Login</h1>
     <form action="" method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">login</button>
+        <button type="submit" id='button-form-login'>login</button>
     </form>
 </div>
 </body>
