@@ -1,18 +1,21 @@
 body {
     background-image: url(home.jpg);
     background-size: cover;
+    background-position: center;
     padding-top: 150px;
 }
 
 #about-body {
     background-image: url(about.jpg);
     background-size: cover;
+    background-position: center;
     padding-top: 150px;
 }
 
 #blogs-body {
     background-image: url(blog.jpg );
     background-size: cover;
+    background-position: center;
     padding-top: 150px;
 }
 
@@ -140,7 +143,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-    #logout:hover {
+#logout:hover {
     background-color: black;
     color: red;
     border: 4px solid red;
@@ -167,8 +170,8 @@ body {
     border: 5px solid cyan;
     padding: 10px;
     background-color: black;
-    margin-top: 20px;
     border-radius: 10px;
+    margin-top: 20px;
 }
 
 .blog-edit {
@@ -197,6 +200,7 @@ body {
 #blogs-list {
     background-color: black;
     border: 5px solid cyan;
+    background-attachment: scroll;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(4, 1fr);
@@ -204,11 +208,19 @@ body {
     padding: 7px;
     border-radius: 5px;
     font-size: 170%; 
-    margin-top: 35px;
+    margin-top: 20px;
+    max-height: 120px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-items: center;
 }
 
 #blogs-list-items {
     color: cyan;
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    height: 100%; 
 }
 
 .confirm-button {
@@ -371,4 +383,43 @@ body {
     margin-left: 5px;
     color: rgb(57, 238, 16);
     text-shadow: 0px 0px 20px rgb(57, 238, 16);
+}
+
+.form-edit-and-add input[type="submit"] {
+    width: 200px;
+    font-size: 20px;
+    color: cyan;
+    background-color: black;
+    border-radius: 7px;
+    border: none;
+    border: 2px solid rgb(126, 126, 126);
+    padding-top: 5px;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.form-edit-and-add input[type="submit"]:hover {
+    background-color: black;
+    color: cyan;
+    border: 2px solid cyan;
+    box-shadow: 0px 0px 10px cyan;
+}
+
+.blog-detail-add-edit {
+    backdrop-filter: blur(100px);
+    border-radius: 20px;
+    border: 7px solid cyan;
+    padding: 20px;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    box-shadow: 0px 0px 20px cyan inset;
+}
+
+#edit-h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
