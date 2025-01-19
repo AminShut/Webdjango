@@ -134,3 +134,6 @@ LOGIN_REDIRECT_URL = 'Home_Page'
 
 #Logout redirect
 LOGOUT_REDIRECT_URL = 'Home_Page'
+
+#Using custom user model
+AUTH_USER_MODEL = 'accounts.CustomUser'

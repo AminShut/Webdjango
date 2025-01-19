@@ -8,6 +8,7 @@
         <div id='password-name'>
         {% csrf_token %}
         {{form.as_p}}
+        <span>&nbsp;&nbsp;Don't have account?&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="{% url 'signup' %}">Signup</a>
         </div>
         <button type="submit" id='button-form-login'>login</button>
     </form>
