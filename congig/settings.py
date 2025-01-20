@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'blog',
     'home',
     'accounts',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +139,6 @@ LOGOUT_REDIRECT_URL = 'Home_Page'
 
 #Using custom user model
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
