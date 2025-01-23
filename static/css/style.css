@@ -375,13 +375,18 @@ body {
     height: 4%;
     background-color: transparent;
     color: white;
-    box-shadow: 1px 1px 10px rgb(120, 120, 120) inset;
+    box-shadow: 2px 2px 12px rgb(120, 120, 120) inset;
     margin-top: 5px;
+}
+
+#password-name input:focus {
+    border: 2px solid cyan;
+    box-shadow: 0px 0px 18px cyan;
 }
 
 #password-name label {
     margin-left: 5px;
-    color: rgb(57, 238, 16);
+    color: rgb(255, 255, 255);
     text-shadow: 0px 0px 20px rgb(57, 238, 16);
 }
 
