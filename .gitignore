@@ -2,3 +2,5 @@ env
 h.html
 test.py
 .codegpt
+chatbot/ai_chat/api_key.py
+.env

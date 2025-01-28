@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'home',
     'accounts',
+    'chatbot',
     'crispy_forms',
     'crispy_bootstrap4',
 ]

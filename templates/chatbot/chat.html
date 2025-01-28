@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Chat History:</h2>
+    {% for message in chat_history %}
+        {% if message.role == 'user' %}
+            <p><strong>You:</strong> {{ message.content }}</p>
+        {% elif message.role == 'assistant' %}
+            <p><strong>AminBot:</strong> {{ message.content }}</p>
+        {% endif %}
+    {% endfor %}
+    <br>
+    <br>
+    <h1>Chatbot</h1>
+    <br>
+    <hr>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        <button type="submit">Send</button>
+    </form>
+    <br>
+    <hr>
+    <br>
+</body>
+</html>
