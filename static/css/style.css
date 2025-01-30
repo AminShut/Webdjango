@@ -2,20 +2,20 @@ body {
     background-image: url(home.jpg);
     background-size: cover;
     background-position: center;
-    padding-top: 150px;
+    padding-top: 110px;
 }
 
 #about-body {
     background-image: url(about.jpg);
     background-size: cover;
     background-position: center;
-    padding-top: 150px;
 }
 
 #blogs-body {
     background-image: url(blog.jpg );
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     padding-top: 150px;
 }
 
@@ -31,96 +31,118 @@ body {
     background-position: center;
 }
 
+.chat-bot {
+    background-image: url('./chat.png');
+    background-color: black;
+    border-radius: 10px;
+    border: 2px solid orange;
+    width: 90px;
+    height: 90px; 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.chat-bot:hover {
+    box-shadow: 0px 0px 20px orange;
+}
+
 #header {
     position: fixed;
     top: 0;
-    width: 96.3%;
+    width: 78%;
     height: 13%;
     z-index: 1000;
-    margin-top: 10px;
-    background-color:rgb(85, 0, 0);
-    border: 10px solid rgb(106, 106, 106);
+    background-color:rgb(102, 94, 94);
     font-size: xx-large;
-    font-weight: 900;
+    font-weight: 700;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    box-shadow: 0px 0px 60px rgb(172, 0, 0) inset;
-    padding: 10px;
+    box-shadow: 0px 0px 60px rgb(165, 165, 165) inset;
     list-style: none;
+    margin-left: -8px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border-radius: 15px;
     transition: all 0.s ease-in-out;
 
     .header-items {
-        color: black;
+        color: rgb(0, 0, 0);
+        position: relative;
         padding: 7px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        border: 4px solid black;
         text-decoration: none;
         padding-left: 10px;
         padding-right: 10px;
         margin-top: 20px;
-        border-radius: 8px;
-        transition: all 0.6s ease-in-out;
+        border-radius: 10px;
+        transition: all 0.7s ease-in-out;
     }
 
-    #home {
-        background-color: rgb(140, 0, 255);
+    .header-items::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        border-radius: 5px;
+        transform: translateX(-50%);
+        transition: width 0.8s;
     }
 
-    #blogs {
-        background-color: aqua;    
+    .header-items:hover::after {
+        width: 100%;
     }
 
-    #about {
-        background-color:#0059ff;
+    #home::after {
+    background-color: #AA00FF;
+    }
+    
+    #about::after {
+        background-color: #0ea2f8;
     }
 
-    #login {
-        background-color: rgb(155, 215, 36);
+    #blogs::after {
+        background-color: cyan;
+    }
+
+    #login::after {
+        background-color: rgb(57, 238, 16);
     }
 
     #home:hover {
-        background-color: black;
         color: #AA00FF;
-        border: 4px solid #AA00FF;
-        box-shadow: 0px 0px 35px  #AA00FF inset ;
-        text-shadow: 0px 0px 30px  #AA00FF ;
+        text-shadow: 0px 0px 20px #AA00FF;
     }
 
     #about:hover {
-        background-color: black;
         color: #0ea2f8;
-        border: 4px solid #0ea2f8;
-        box-shadow: 0px 0px 30px  #0ea2f8 inset;
-        text-shadow: 0px 0px 25px  #0ea2f8 ;
+        text-shadow: 0px 0px 30px  #0ea2f8;
     }
 
     #blogs:hover {
-        background-color: black;
         color: cyan;
-        border: 4px solid cyan;
-        box-shadow: 0px 0px 25px  cyan inset;
-        text-shadow: 0px 0px 20px  cyan ;
+        text-shadow: 0px 0px 30px  cyan ;
     }
 
     #login:hover {
-        background-color: black;
         color: rgb(57, 238, 16);
-        border: 4px solid rgb(57, 238, 16);
-        box-shadow: 0px 0px 25px  rgb(57, 238, 16) inset;
-        text-shadow: 0px 0px 20px  rgb(57, 238, 16) ;
+        text-shadow: 0px 0px 30px  rgb(57, 238, 16) ;
     }
 }
 
 .home-about-page {
     color: rgb(255, 255, 255);
     padding-left: 20px;
-    margin-top: 30px;
+    margin-top: 15px;
     padding: 5px;
     background-color: black;
     border-radius: 5px;
@@ -159,6 +181,7 @@ body {
     border-top: 5px solid rgb(132, 0, 255);
     border-radius: 7px;
     padding: 7px;
+    margin-top: -20px;
 
     .name-user {
     color: cyan;
@@ -171,14 +194,14 @@ body {
     padding: 10px;
     background-color: black;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: -10px;
 }
 
 .blog-edit {
     border: 5px solid cyan;
     padding: 10px;
     background-color: black;
-    margin-top: 20px;
+    margin-top: -10px;
     border-radius: 10px;
 }
 
@@ -208,7 +231,7 @@ body {
     padding: 7px;
     border-radius: 5px;
     font-size: 170%; 
-    margin-top: 20px;
+    margin-top: -10px;
     max-height: 120px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -333,7 +356,7 @@ body {
     align-items: center;
 }
 
-#login {
+#login-form {
     background-color: black;
     color: white;
     text-shadow: 0px 0px 15px  rgb(57, 238, 16);
@@ -352,7 +375,7 @@ body {
 
 #button-form-login {
     width: 250px;
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 18px;
     border-radius: 7px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -364,6 +387,14 @@ body {
     text-shadow: 0px 0px 15px rgb(57, 238, 16);
     box-shadow: 1px 1px 6px white inset;
     padding-block: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+#button-form-login:hover {
+    border: 2px  solid rgb(57, 238, 16);
+    color: white;
+    text-shadow: 0px 0px 15px white;
+    box-shadow: 1px 1px 10px rgb(57, 238, 16) inset;
 }
 
 #password-name input {
@@ -427,4 +458,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#sigup-button-login {
+    color: white;
+    transition: all 0.3s ease-in-out;
+    font-size: large;
+}
+
+#sigup-button-login:hover {
+    color: #0be881;
+}
+
+#login span {
+    font-size: large;
 }

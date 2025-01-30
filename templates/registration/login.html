@@ -2,13 +2,14 @@
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <body id='login-body'>
-<div id='login'>
+<div id='login-form'>
     <h1 id='login-h1'>Login</h1>
     <form action="" method="post">
         <div id='password-name'>
         {% csrf_token %}
         {{form.as_p}}
-        <span>&nbsp;&nbsp;Don't have account?&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="{% url 'signup' %}">Signup</a>
+        <span>&nbsp;&nbsp;Don't have account?&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <a href="{% url 'signup' %}" id="sigup-button-login">Signup</a>
         </div>
         <button type="submit" id='button-form-login'>login</button>
     </form>

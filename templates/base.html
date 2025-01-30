@@ -7,7 +7,6 @@
         <li><a id='home' class='header-items' href={% url 'Home_Page' %}>Home</a></li>
         <li><a id='about' class='header-items' href={% url 'About_Page' %}>About</a></li>
         <li><a id='blogs' class='header-items' href={% url 'blog_list' %}>The Blogs</a></li>
-        <li><a id='about' class='header-items' href={% url 'chatbot' %}>SiteChat</a></li>
         
         {% if user.is_authenticated %}
         <form method="post" action="{% url 'logout' %}" style="display: inline;">
@@ -22,11 +21,11 @@
 {% block body %}
 
 {% endblock body %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p id='footer1'>Footer...</p>
+<footer>
+    <a href={% url 'chatbot' %}>
+        <div class="chat-bot">
+
+        </div>
+    </a>
+</footer>
 
