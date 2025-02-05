@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Post
 from django.views.generic import ListView,DetailView,UpdateView,DeleteView,CreateView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 class BlogListView(ListView):
     model = Post
@@ -13,7 +14,7 @@ class BlogDetailView(DetailView):
     template_name = 'blog/detail.html'
     context_object_name = 'post'
 
-class BlogEditView(UpdateView):
+class BlogEditView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     model = Post
     template_name = 'blog/edit.html'
     context_object_name = 'post'
@@ -22,13 +23,21 @@ class BlogEditView(UpdateView):
         'text',
     ]
 
-class BlogDeleteView(DeleteView):
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
+
+class BlogDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
     model = Post
     template_name = 'blog/delete.html'
     context_object_name = 'post'
     success_url = reverse_lazy('blog_list')
 
-class BlogCreatView(CreateView):
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
+
+class BlogCreatView(LoginRequiredMixin,CreateView):
     model = Post
     template_name = 'blog/add.html'
     context_object_name = 'post'
