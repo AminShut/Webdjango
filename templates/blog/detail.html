@@ -7,7 +7,7 @@
     <hr>
     <h2 class='all-texts-blogs'>{{post.text}}</h2>
     <br>
-    <h3 class='all-texts-blogs'>written by <span class='name'>{{post.author.username}}</span></h3>
+    <h3 class='all-texts-blogs'>written by <span class='name'>{{post.author.username}}</span> &nbsp&nbsp{{post.date}}</h3>
 </div>
 
 {% if user.username == post.author.username %}
@@ -19,5 +19,19 @@
 </div>
 </body>
 {% endif %}
+<br>
+{% if user.is_authenticated %}
+<form action='' method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' value='Comment'>
+</form>
+{% endif %}
+<hr>
+{% for comment in post.comments.all %}
+<h3>{{comment.author}} :</h3>
+<p>{{comment.text}} &nbsp&nbsp {{comment.date}}</p>
+<hr>
+{% endfor %}
 
 {% endblock body %}
