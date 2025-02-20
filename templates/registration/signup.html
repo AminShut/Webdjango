@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 {% load crispy_forms_tags %}
@@ -7,10 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <h1>Create an account here</h1>
-    <br>
+<body id="body-signup">
+    <div class="signup">
+    <h1 id="h1-signup">Create an account here</h1>
     <br>
     <form action="" method="post">
         {% csrf_token %}
@@ -20,5 +22,6 @@
         <button type="submit">SigUp</button>
     </form>
     <span>Already have an account? </span><a href={% url 'login' %}>Login</a>
+    </div>
 </body>
 </html>
