@@ -27,6 +27,10 @@
     <input type='submit' value='Comment'>
 </form>
 {% endif %}
+{% comment %} <a href="?order=newest_first">Newest comments first</a> | 
+<a href="?order=oldest_first">Oldest comments first</a> {% endcomment %}
+<br>
+<h2>Comments</h2>
 <hr>
 {% for comment in post.comments.all %}
 <h3>{{comment.author}} :</h3>

@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from .forms import MessageForm
 from .ai_chat.chat_ai import chat_bot
 from .models import Chatbot
@@ -34,6 +35,7 @@ def chatbot_view(request):
                 if not got_error:
                     chat_obj.messages.append({'role': 'assistant', 'content': response_message})
                     chat_obj.save()
+                return redirect(reverse_lazy('chatbot'))
                 
 
         else:

@@ -1,14 +1,14 @@
 from django.forms import ModelForm
-from .models import Comment
+from .models import Comment,Post
 from django.forms.widgets import HiddenInput
 
 
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
-        fields = ['text','author','post']
+        fields = ['text']
 
-        widgets = {
-            'author': HiddenInput(),
-            'post': HiddenInput()
-        }
+class PostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'text']
