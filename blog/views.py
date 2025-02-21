@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponseForbidden
 from .models import Post,Comment
 from .forms import CommentForm, PostForm
 from django.views.generic import ListView,DetailView,UpdateView,DeleteView,CreateView
@@ -82,7 +83,7 @@ def blog_edit(request, pk):
         if request.method == 'POST':
             form = PostForm(request.POST or None, instance = post)
             if form.is_valid():
-                obj = form.save()
+                form.save()
                 return redirect(reverse_lazy('blog_detail', kwargs={'pk': post.id}))
             
         else:
@@ -90,7 +91,7 @@ def blog_edit(request, pk):
             return render(request, 'blog/edit.html', {'form' : form, 'post' : post})
 
     else:
-        return render(request, 'Errors/permission_error.html')
+        return HttpResponseForbidden()
 
         
         
@@ -115,18 +116,31 @@ def blog_delete(request, pk):
         else:
             return render(request, 'blog/delete.html', {'post' : post})
     else:
-        return render(request, 'Errors/permission_error.html')
+        return HttpResponseForbidden()
 
 
-class BlogCreatView(LoginRequiredMixin,CreateView):
-    model = Post
-    template_name = 'blog/add.html'
-    context_object_name = 'post'
-    fields=[
-        'title',
-        'text',
-    ]
+# class BlogCreatView(LoginRequiredMixin,CreateView):
+#     model = Post
+#     template_name = 'blog/add.html'
+#     context_object_name = 'post'
+#     fields=[
+#         'title',
+#         'text',
+#     ]
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+#     def form_valid(self, form):
+#         form.instance.author = self.request.user
+#         return super().form_valid(form)
+
+@login_required
+def blog_add(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.author = request.user
+            obj.save()
+            return redirect(reverse_lazy('blog_detail', kwargs={'pk': obj.id}))
+    else:
+        form = PostForm()
+    return render(request, 'blog/add.html', {'form': form})

@@ -10,7 +10,7 @@
     <h3 class='all-texts-blogs'>written by <span class='name'>{{post.author.username}}</span> &nbsp&nbsp{{post.date}}</h3>
 </div>
 
-{% if user.username == post.author.username %}
+{% if user == post.author %}
 <br>
 <br>
 <div class='edit-delete-buttons'>
