@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body id="body-chat">
+    <div class="chat-container">
+        <h2 id="history">Chat Bot</h2>
+        <div class="chat-messages">
+            {% for message in chat_history %}
+                {% if message.role == 'user' %}
+                    <div class="user-message">
+                         {{ message.content }} <strong>:You</strong>
+                    </div>
+                {% elif message.role == 'assistant' %}
+                    <div class="bot-message">
+                        <strong>AminBot:</strong> {{ message.content }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    <div class="chat-input-container">    
+        <form method="post" id="form-chat">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" id="button-send">Send</button>
+        </form>
+    </div>
+    </div>
+    <br>
+    <br>
+</div>
+</body>
+</html>

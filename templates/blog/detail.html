@@ -1,19 +1,41 @@
-{% extends "base.html" %}
+{% extends "blog_base.html" %}
 
 {% block body %}
+<body id='blogs-body'>
 <div class='blog-detail'>
-    <h1>{{post.title}}</h1>
+    <h1 class='all-texts-blogs'>{{post.title}}</h1>
     <hr>
-    <h2>{{post.text}}</h2>
+    <h2 class='all-texts-blogs'>{{post.text}}</h2>
     <br>
-    <h3>written by <span class='name'>{{post.author.username}}</span></h3>
+    <h3 class='all-texts-blogs'>written by <span class='name'>{{post.author.username}}</span> &nbsp&nbsp{{post.date}}</h3>
 </div>
 
-{% if user.username == post.author.username %}
+{% if user == post.author %}
 <br>
 <br>
+<div class='edit-delete-buttons'>
 <a class='confirm-button' href='{% url 'blog_edit' post.id %}'>Edit</a>
 <a class='delete-button' href='{% url 'blog_delete' post.id %}'>Delete</a>
+</div>
+</body>
 {% endif %}
+<br>
+{% if user.is_authenticated %}
+<form action='' method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' value='Comment'>
+</form>
+{% endif %}
+{% comment %} <a href="?order=newest_first">Newest comments first</a> | 
+<a href="?order=oldest_first">Oldest comments first</a> {% endcomment %}
+<br>
+<h2>Comments</h2>
+<hr>
+{% for comment in post.comments.all %}
+<h3>{{comment.author}} :</h3>
+<p>{{comment.text}} &nbsp&nbsp {{comment.date}}</p>
+<hr>
+{% endfor %}
 
 {% endblock body %}

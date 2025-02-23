@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'home',
+    'accounts',
+    'chatbot',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +137,11 @@ LOGIN_REDIRECT_URL = 'Home_Page'
 
 #Logout redirect
 LOGOUT_REDIRECT_URL = 'Home_Page'
+
+#Using custom user model
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

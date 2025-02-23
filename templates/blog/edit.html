@@ -1,14 +1,16 @@
-{% extends "base.html" %}
+{% extends "blog_base.html" %}
 
 {% block body %}
-<div class='blog-edit'>
-    <h1>Edit post <span id='title-post-name' class='name'>"{{post.title}}"</span></h1>
+<body id='blogs-body'>
+<div class='blog-detail-add-edit'>
+    <h1 class='all-texts-blogs' id='edit-h1'>Edit post <span id='title-post-name' class='name'>"{{post.title}}"</span></h1>
     <hr>
-    <form action="" method="post">
+    <form action="" method="post" class='form-edit-and-add'>
         {{form.as_p}}
         {% csrf_token %}
         <br>
         <input type="submit" value="Save">
     </form>
 </div>
+</body>
 {% endblock body %}

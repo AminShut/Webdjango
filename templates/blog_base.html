@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="header">
+
+        <li><a id='home' class='header-items' href={% url 'Home_Page' %}>Home</a></li>
+        <li><a id='about' class='header-items' href={% url 'About_Page' %}>About</a></li>
+        <li><a id='blogs' class='header-items' href={% url 'blog_list' %}>The Blogs</a></li>
+  
+        {% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                {% csrf_token %}
+            <button type="submit" id='logout' class='header-items'>Logout</button>
+        </form>
+        {% else %}
+        <li><a id='login' class='header-items' href='{% url 'login' %}'>Login</a></li>
+        {% endif %}
+    </div>
+
+    {% comment %}
+    تو بلاک زیر در فایل های اچ تی ام ال دیگه، بخش های متغیر برای هر صفحه رو میذاری
+    و تو بیرون این بلاک بخش ثابتی که میخوای 
+    {% endcomment %}
+    {% block body %}
+    
+    {% endblock body %}
+
+</body>
+</html>
