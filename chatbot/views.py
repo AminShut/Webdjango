@@ -31,6 +31,7 @@ def chatbot_view(request):
                     chat_obj.messages.append({'role': 'assistant', 'content': response_message})
                     chat_obj.save()
                     got_error = True
+                    print('Error :  ',e)
 
                 if not got_error:
                     chat_obj.messages.append({'role': 'assistant', 'content': response_message})
