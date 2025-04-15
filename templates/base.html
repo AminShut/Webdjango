@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body class="{% if request.path == '/' %}home-page{% elif 'blog' in request.path %}blog-page{% elif 'login' in request.path or 'signup' in request.path or 'password' in request.path %}auth-page{% endif %}">
+<body class="{% if request.path == '/' %}home-page{% elif 'blog' in request.path %}blog-page{% elif 'about' in request.path %}about-body{% elif 'chatbot' in request.path %}body-chat{% elif 'login' in request.path or 'signup' in request.path or 'password' in request.path %}auth-page{% endif %}">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
@@ -35,8 +35,8 @@
                         <a class="nav-link" href="{% url 'signup' %}">Signup</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <form method="post" action="{% url 'logout' %}" class="d-inline">
+                    <li class="nav-item logout-item">
+                        <form method="post" action="{% url 'logout' %}" class="nav-form">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-link nav-link">Logout</button>
                         </form>
@@ -52,7 +52,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="container mt-5 pt-4">
+    <main class="container mt-5 pt-4 {% if 'chatbot' in request.path %}chatbot-main{% endif %}">
         {% block body %}
         {% endblock body %}
     </main>

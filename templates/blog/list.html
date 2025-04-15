@@ -1,20 +1,15 @@
 {% extends "base.html" %}
 
 {% block body %}
-<body id='blogs-body'>
 <div id='blogs-list' class='header-items'>
     {% for post in posts %}
         <a id='blogs-list-items' href='{{post.get_absolute_url}}'>{{post.title}}</a>
-        <br>
     {% endfor %}
 </div>
-<br>
-<br>
+
 {% if user.is_authenticated %}
 <a class='add-button' href='{% url 'blog_new' %}'>+ Add Post</a>
 {% else %}
 <p id='p-login-first' class='all-texts-blogs'>to add post, please login first!</p>
-</body>
 {% endif %}
-
 {% endblock body %}
