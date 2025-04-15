@@ -1,597 +1,296 @@
-#body-home {
-    background-image: url(home.jpg);
-    background-size: cover;
-    background-position: center;
-    padding-top: 110px;
+/* Global Styles */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    --gradient-dark: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    --gradient-auth: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    --gradient-blog: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    --gradient-home: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
 }
 
-#about-body {
-    background-image: url(about.jpg);
-    background-size: cover;
-    background-position: center;
+/* Background Patterns */
+.bg-pattern-1 {
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 20%);
 }
 
-#blogs-body {
-    background-image: url(blog.jpg );
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    padding-top: 150px;
+.bg-pattern-2 {
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 0%, transparent 25%);
 }
 
-#login-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-image: url(login.jpg);
-    background-size: cover;
-    background-position: center;
+.bg-pattern-3 {
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(255,255,255,0.2) 0%, transparent 30%),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.2) 0%, transparent 30%);
 }
 
-#body-chat {
-    background-image: url(file.svg);
-    background-size: cover;
-    background-position: no-repeat;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding-bottom: 100px;
+/* Section-specific backgrounds */
+body.home-page {
+    background: var(--gradient-home);
 }
 
-#body-signup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-image: url(login.jpg);
-    background-size: cover;
-    background-position: center;
+body.blog-page {
+    background: var(--gradient-blog);
 }
 
-#header {
-    position: fixed;
-    top: 0;
-    width: 78%;
-    height: 13%;
-    z-index: 1000;
-    background-color:rgb(102, 94, 94);
-    font-size: xx-large;
-    font-weight: 700;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    box-shadow: 0px 0px 60px rgb(165, 165, 165) inset;
-    list-style: none;
-    margin-left: -8px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    transition: all 0.7s ease-in-out;
-
-    .header-items {
-        color: rgb(0, 0, 0);
-        position: relative;
-        padding: 7px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-top: 20px;
-        border-radius: 10px;
-        transition: all 0.7s ease-in-out;
-    }
-
-    .header-items::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        width: 0;
-        height: 3px;
-        border-radius: 5px;
-        transform: translateX(-50%);
-        transition: width 0.8s;
-    }
-
-    .header-items:hover::after {
-        width: 100%;
-    }
-
-    #home::after {
-    background-color: #AA00FF;
-    }
-    
-    #about::after {
-        background-color: #0ea2f8;
-    }
-
-    #blogs::after {
-        background-color: cyan;
-    }
-
-    #login::after {
-        background-color: rgb(57, 238, 16);
-    }
-
-    #home:hover {
-        color: #AA00FF;
-        text-shadow: 0px 0px 20px #AA00FF;
-    }
-
-    #about:hover {
-        color: #0ea2f8;
-        text-shadow: 0px 0px 30px  #0ea2f8;
-    }
-
-    #blogs:hover {
-        color: cyan;
-        text-shadow: 0px 0px 30px  cyan ;
-    }
-
-    #login:hover {
-        color: rgb(57, 238, 16);
-        text-shadow: 0px 0px 30px  rgb(57, 238, 16) ;
-    }
+body.auth-page {
+    background: var(--gradient-auth);
 }
 
-.home-about-page {
-    color: rgb(255, 255, 255);
-    padding-left: 20px;
-    margin-top: 15px;
-    padding: 5px;
-    background-color: black;
-    border-radius: 5px;
-    padding-left: 20px;
-}
-
-#home-page {
-    border-bottom: 3px solid rgb(132, 0, 255) ;
-}
-
-#about-page {
-    border-bottom: 3px solid rgb(0, 102, 255) ;
-}
-
-#logout {
-    background-color: red;
-    font-size: 130%;
-    font-size: xx-large;
-    font-weight: 900;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-#logout:hover {
-    background-color: black;
-    color: red;
-    border: 4px solid red;
-    box-shadow: 0px 0px 20px  red inset;
-    text-shadow: 0px 0px 25px  red ;
-}
-
-.welcome {
-    background-color: black;
-    color: white;
-    font-size: 170%;
-    border-bottom: 5px solid   blue;
-    border-top: 5px solid rgb(132, 0, 255);
-    border-radius: 7px;
-    padding: 7px;
-    margin-top: -20px;
-
-    .name-user {
-    color: cyan;
-    font-size: 40px;
-    }
-}
-
-.blog-detail {
-    border: 5px solid cyan;
-    padding: 10px;
-    background-color: black;
-    border-radius: 10px;
-    margin-top: -10px;
-}
-
-.blog-edit {
-    border: 5px solid cyan;
-    padding: 10px;
-    background-color: black;
-    margin-top: -10px;
-    border-radius: 10px;
-}
-
-.name {
-    font-size: 25px;
-    font-weight: 800;
-    color: rgb(57, 238, 16);;
-}
-
-#warning-name {
-    font-size: 35;
-    color: red;
-}
-
-#title-post-name {
-    font-size: 35;
-}
-
-#blogs-list {
-    background-color: black;
-    border: 5px solid cyan;
-    background-attachment: scroll;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 7px;
-    padding: 7px;
-    border-radius: 5px;
-    font-size: 170%; 
-    margin-top: -10px;
-    max-height: 120px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    align-items: center;
-}
-
-#blogs-list-items {
-    color: cyan;
-    line-height: 1.3;
-    display: flex;
-    align-items: center;
-    height: 100%; 
-}
-
-.confirm-button {
-    border: 5px solid greenyellow;
-    background-color: green;
-    border-radius: 10px;
-    font-size: 40px;
-    text-decoration: none;
-    padding: 10px;
-    color: black;
-    transition: all 0.5s ease-in-out;
-    padding-inline: 33px;
-}
-
-.confirm-button:hover {
-    color: greenyellow;
-    background-color: black;
-    border: 5px solid green;
-}
-
-.add-button {
-    border: 5px solid black;
-    background-color: deepskyblue;
-    border-radius: 10px;
-    font-size: 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 
-    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 10px;
-    color: black;
-    transition: all 0.5s ease-in-out;
-}
-  
-.add-button:hover {
-    color: deepskyblue;
-    background-color: black; 
-    border: 5px solid cyan;
-}
-
-.delete-button {
-    border: 5px solid rgb(255, 0, 0);
-    background-color: rgb(148, 0, 0);
-    border-radius: 10px;
-    font-size: 40px;
-    text-decoration: none;
-    padding: 10px;
-    color: black;
-    margin-left: 5px;
-    transition: all 0.5s ease-in-out;
-}
-
-.delete-button:hover {
-    color: rgb(255, 0, 0);
-    background-color: black;
-    border: 5px solid rgb(148, 0, 0);
-}
-
-#p-login-first {
-    font-size: 40px;
-    border-bottom: 3px solid cyan;
-    background-color: black;
-    font-size: 35px;
-    padding: 7px;
-    border-radius: 7px;
-    padding-left: 15px;
-    margin-top: 10px;
-}
-
-.delete-Button-yes-and-no {
-    background-color: white;
-    font-size: 30px;
-    padding-inline: 10px;
-    cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: 5px;
-    font-weight: 500;
-    border: none;
-}
-
-#delete-button-no{
-    font-size: 28px;
-    padding: 2.5px 18px;
-    color: black;
-    text-decoration: none;
-    
-}
-
-.all-texts-blogs {
-    color: white;
-}
-
-#p {
-    color: cyan;
-}
-
-.form-edit-and-add {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Auth Pages Styling */
+.auth-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-#new-post {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.auth-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    background: var(--gradient-auth);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-#login-form {
-    background-color: black;
-    color: white;
-    text-shadow: 0px 0px 15px  rgb(57, 238, 16);
-    padding: 40px 30px;
-    border-radius: 10px;
-    border: 2px solid rgb(57, 238, 16);
-    box-shadow: 0px 0px 17px  rgb(57, 238, 16) inset;
-}   
-
-#login-h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
-#button-form-login {
-    width: 250px;
-    margin-top: 20px;
-    font-size: 18px;
-    border-radius: 7px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 500;
-    cursor: pointer;
-    background-color: black;
-    border: 2px  solid white;
-    color: rgb(57, 238, 16);
-    text-shadow: 0px 0px 15px rgb(57, 238, 16);
-    box-shadow: 1px 1px 6px white inset;
-    padding-block: 3px;
-    transition: all 0.3s ease-in-out;
-}
-
-#button-form-login:hover {
-    border: 2px  solid rgb(57, 238, 16);
-    color: white;
-    text-shadow: 0px 0px 15px white;
-    box-shadow: 1px 1px 10px rgb(57, 238, 16) inset;
-}
-
-#password-name input {
-    outline: none;
-    border: none;
-    width: 100%;
-    border: 2px solid rgb(120, 120, 120);
-    border-radius: 20px;
-    height: 4%;
-    background-color: transparent;
-    color: white;
-    box-shadow: 2px 2px 12px rgb(120, 120, 120) inset;
-    margin-top: 5px;
-}
-
-#password-name input:focus {
-    border: 2px solid cyan;
-    box-shadow: 0px 0px 18px cyan;
-}
-
-#password-name label {
-    margin-left: 5px;
-    color: rgb(255, 255, 255);
-    text-shadow: 0px 0px 20px rgb(57, 238, 16);
-}
-
-.form-edit-and-add input[type="submit"] {
-    width: 200px;
-    font-size: 20px;
-    color: cyan;
-    background-color: black;
-    border-radius: 7px;
-    border: none;
-    border: 2px solid rgb(126, 126, 126);
-    padding-top: 5px;
-    margin-top: -5px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
-}
-
-.form-edit-and-add input[type="submit"]:hover {
-    background-color: black;
-    color: cyan;
-    border: 2px solid cyan;
-    box-shadow: 0px 0px 10px cyan;
-}
-
-.blog-detail-add-edit {
-    backdrop-filter: blur(100px);
-    border-radius: 20px;
-    border: 7px solid cyan;
-    padding: 20px;
-    width: 600px;
-    margin: 0 auto;
-    margin-top: 20px;
-    box-shadow: 0px 0px 20px cyan inset;
-}
-
-#edit-h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#sigup-button-login {
-    color: white;
-    transition: all 0.3s ease-in-out;
-    font-size: large;
-}
-
-#sigup-button-login:hover {
-    color: #0be881;
-}
-
-#login span {
-    font-size: large;
-}
-
-.chat-bot {
-    background-image: url('./chat.png');
-    width: 90px;
-    height: 90px; 
-    background-size: contain;
-    background-position: center;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
-}
-
-.container, .signup {
-    color: white;
-}
-
-.signup{
-    background-color: black;
-    color: white;
-    padding: 30px;
-    border: 3px solid #0be881;
+.form-control {
     border-radius: 8px;
-    box-shadow: 0px 0px 20px #0be881 inset,
-    0px 0px 20px #0be881;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
 }
 
-.user-message {
-    text-align: right;
-    margin: 10px 0;
-    padding: 10px 15px;
-    background-color: #0ea2f8;
-    color: white;
-    border-radius: 15px 15px 0 15px;
-    max-width: 70%;
-    float: right;
-    clear: both;
-    font-size: 17px;
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 198, 255, 0.25);
+    border-color: #00c6ff;
 }
 
-#history {
+.btn-auth {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: var(--gradient-auth);
+    border: none;
     color: white;
-    background: linear-gradient(to right, #002f4b, #00a2ff);
-    margin-top: -8px;
-    margin-left: -7px;
-    height: 65px;
-    width: 101%;
-    font-size: 40px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-auth:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+    color: white;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.auth-links a {
+    color: #0072ff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Navigation Styles */
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+    color: #2c3e50 !important;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
+}
+
+/* Chatbot Button */
+.chatbot-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.bot-message {
-    text-align: left;
-    margin: 10px 0;
-    padding: 10px 15px;
-    background-color: #333;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     color: white;
-    border-radius: 15px 15px 15px 0;
-    max-width: 70%;
-    float: left;
-    clear: both;
-    font-size: 17px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-#form-chat {
-    margin-top: 530px;
-    position: fixed;
-}
-
-#form-chat textarea {
-    position: fixed;
-    width: 50%;
-    height: 55px;
-    padding: 10px;
-    margin-left: 24%;
-    border-radius: 20px;
-    background-color: #494949;
+.chatbot-button:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     color: white;
-    border: 4px solid #2f89ff;
-    font-size: 15px;
-    
+    text-decoration: none;
 }
 
-#form-chat textarea:focus {
-    outline: none;
-    box-shadow: 0px 0px 15px rgb(95, 209, 209) inset ,
-    0px 0px 15px rgb(94, 192, 192);
+.chatbot-button i {
+    font-size: 24px;
 }
 
-#form-chat label {
-    display: none;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem !important;
+    }
+
+    main {
+        margin: 10px;
+        margin-top: 70px;
+    }
+
+    .auth-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .chatbot-button {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .chatbot-button i {
+        font-size: 20px;
+    }
 }
 
-.chat-container button {
-    position: fixed;
-    width: 65px;
-    height: 30 px;
-    margin-left: 71%;
-    margin-top: 85px;
-    border-radius: 7px;
-    background-color: #377da7;
-    color: white;
-    cursor: pointer;
-    transition: all 0.1s ease-in-out;
-    font-size: 15px;
-    border: 1px solid white;
+/* Custom Button Styles */
+.btn-link.nav-link {
+    color: var(--danger-color) !important;
+    padding: 0.5rem 1rem !important;
 }
 
-.chat-container button:hover {
-    background-color: #0ea2f8;
+.btn-link.nav-link:hover {
+    color: #a71d2a !important;
+    text-decoration: none;
+    transform: translateY(-2px);
 }
 
-.chat-container button:focus {
-    transform: scale(0.9);
+/* Animation for navbar items */
+.nav-link {
+    position: relative;
 }
 
-.chat-input-container {
+.nav-link::after {
+    content: '';
     position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
 }
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Custom container padding */
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Background Animation */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+} 
