@@ -1,16 +1,145 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Required</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            background: var(--gradient-auth);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: gradientShift 15s ease infinite;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        
+        .login-error-container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 20px;
+            text-align: center;
+        }
+        
+        .login-error-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        
+        .login-error-icon {
+            font-size: 60px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .auth-buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .auth-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .login-button {
+            background: var(--gradient-primary);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .signup-button {
+            background: var(--gradient-auth);
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.2);
+        }
+        
+        .auth-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .auth-button i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .error-message {
+            color: #666;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        
+        .divider {
+            margin: 25px 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+        }
+        
+        @media (max-width: 576px) {
+            .login-error-container {
+                padding: 30px 20px;
+                margin: 15px;
+            }
+            
+            .login-error-title {
+                font-size: 22px;
+            }
+            
+            .auth-button {
+                padding: 12px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>To use AminBot and other feature please login first</h1>
-    <br>
-    <hr>
-    <a href="{% url 'login' %}">Login</a>
-    <br>
-    <a href="{% url 'signup' %}">Create account</a>
+    <div class="login-error-container">
+        <div class="login-error-icon">
+            <i class="fas fa-robot"></i>
+        </div>
+        <h1 class="login-error-title">Authentication Required</h1>
+        <div class="divider"></div>
+        <p class="error-message">
+            To use AminBot and access other premium features, please log in to your account or create a new one.
+        </p>
+        <div class="auth-buttons-container">
+            <a href="{% url 'login' %}" class="auth-button login-button">
+                <i class="fas fa-sign-in-alt"></i> Login to Your Account
+            </a>
+            <a href="{% url 'signup' %}" class="auth-button signup-button">
+                <i class="fas fa-user-plus"></i> Create New Account
+            </a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 </body>
 </html>

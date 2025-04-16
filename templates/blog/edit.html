@@ -1,16 +1,174 @@
 {% extends "blog_base.html" %}
 
 {% block body %}
-<body id='blogs-body'>
 <div class='blog-detail-add-edit'>
-    <h1 class='all-texts-blogs' id='edit-h1'>Edit post <span id='title-post-name' class='name'>"{{post.title}}"</span></h1>
+    <h1 class='all-texts-blogs' id='edit-h1'><i class="fas fa-pencil-alt"></i> Edit Post <span id='title-post-name' class='name'>"{{post.title}}"</span></h1>
     <hr>
-    <form action="" method="post" class='form-edit-and-add'>
-        {{form.as_p}}
-        {% csrf_token %}
-        <br>
-        <input type="submit" value="Save">
-    </form>
+    
+    <div class="post-form-container">
+        <form action="" method="post" class='form-edit-and-add'>
+            {% csrf_token %}
+            
+            <div class="form-group post-title">
+                <label for="{{ form.title.id_for_label }}">Post Title</label>
+                {{ form.title }}
+                {% if form.title.errors %}
+                <div class="form-error">
+                    {{ form.title.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group post-content">
+                <label for="{{ form.text.id_for_label }}">Post Content</label>
+                {{ form.text }}
+                {% if form.text.errors %}
+                <div class="form-error">
+                    {{ form.text.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group submit-group">
+                <button type="submit" class="post-submit-btn">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
-</body>
+
+<style>
+    .blog-detail-add-edit {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+    
+    .blog-detail-add-edit h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    .blog-detail-add-edit h1 i {
+        color: var(--primary-color);
+        margin-right: 10px;
+    }
+    
+    .post-form-container {
+        margin-top: 25px;
+        width: 100%;
+    }
+    
+    .form-group {
+        margin-bottom: 25px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #444;
+        font-size: 16px;
+    }
+    
+    .form-group.post-content {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .post-title input {
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        background-color: #f9f9f9;
+        max-width: 500px;
+        height: 45px;
+    }
+    
+    .post-content textarea {
+        width: 100%;
+        min-width: 100%;
+        padding: 15px;
+        font-size: 18px;
+        border: 3px solid #ddd;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        resize: vertical;
+        line-height: 1.8;
+        background-color: #f9f9f9;
+        font-weight: 500;
+    }
+    
+    .post-title input:focus,
+    .post-content textarea:focus {
+        border-color: var(--primary-color);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        background-color: #fff;
+    }
+    
+    .form-error {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    
+    .post-submit-btn {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .post-submit-btn i {
+        margin-right: 8px;
+    }
+    
+    .post-submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .submit-group {
+        text-align: right;
+    }
+    
+    @media (max-width: 768px) {
+        .blog-detail-add-edit {
+            padding: 20px;
+        }
+        
+        .post-title input,
+        .post-content textarea {
+            padding: 10px;
+            font-size: 15px;
+        }
+        
+        .post-submit-btn {
+            padding: 10px 20px;
+            font-size: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .submit-group {
+            text-align: center;
+        }
+    }
+</style>
 {% endblock body %}

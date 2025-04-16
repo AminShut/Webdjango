@@ -17,23 +17,272 @@
     <a class='delete-button' href='{% url 'blog_delete' post.id %}'>Delete</a>
 </div>
 {% endif %}
-<br>
-{% if user.is_authenticated %}
-<form action='' method='POST'>
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type='submit' value='Comment'>
-</form>
-{% endif %}
-{% comment %} <a href="?order=newest_first">Newest comments first</a> | 
-<a href="?order=oldest_first">Oldest comments first</a> {% endcomment %}
-<br>
-<h2>Comments</h2>
-<hr>
-{% for comment in post.comments.all %}
-<h3>{{comment.author}} :</h3>
-<p>{{comment.text}} &nbsp;&nbsp;{{comment.date}}</p>
-<hr>
-{% endfor %}
 
+<!-- Comment Section -->
+<div class="comments-section">
+    <div class="comments-header">
+        <h2><i class="fas fa-comments"></i> Comments ({{ post.comments.all|length }})</h2>
+    </div>
+    
+    {% if user.is_authenticated %}
+    <div class="comment-form-container">
+        <div class="user-avatar">
+            <i class="fas fa-user-circle"></i>
+        </div>
+        <div class="comment-input-area">
+            <form action='' method='POST' class="comment-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.text }}
+                </div>
+                <div class="comment-actions">
+                    <button type="submit" class="comment-submit-btn"><i class="fas fa-paper-plane"></i> Post Comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="login-to-comment">
+        <p><i class="fas fa-lock"></i> Please <a href="{% url 'login' %}">login</a> to leave a comment.</p>
+    </div>
+    {% endif %}
+    
+    <div class="comments-list">
+        {% if post.comments.all %}
+            {% for comment in post.comments.all %}
+            <div class="comment-item">
+                <div class="comment-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <span class="comment-author">{{ comment.author }}</span>
+                        <span class="comment-date">{{ comment.date|date:"F d, Y" }}</span>
+                    </div>
+                    <div class="comment-text">
+                        {{ comment.text }}
+                    </div>
+                    <div class="comment-actions">
+                        <button class="action-btn like-btn"><i class="far fa-thumbs-up"></i> Like</button>
+                        <button class="action-btn reply-btn"><i class="fas fa-reply"></i> Reply</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-comments">
+                <p><i class="far fa-comment-alt"></i> No comments yet. Be the first to comment!</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    /* Comment Section Styling */
+    .comments-section {
+        margin-top: 30px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        padding: 20px;
+    }
+    
+    .comments-header {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+    }
+    
+    .comments-header h2 {
+        font-size: 20px;
+        color: #333;
+        font-weight: 600;
+    }
+    
+    .comments-header h2 i {
+        margin-right: 8px;
+        color: var(--primary-color);
+    }
+    
+    .comment-form-container {
+        display: flex;
+        margin-bottom: 25px;
+        align-items: flex-start;
+    }
+    
+    .user-avatar, .comment-avatar {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .user-avatar i, .comment-avatar i {
+        font-size: 40px;
+        color: #aaa;
+    }
+    
+    .comment-input-area {
+        flex-grow: 1;
+    }
+    
+    .comment-form .form-group {
+        margin-bottom: 10px;
+    }
+    
+    .comment-form textarea {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 12px;
+        min-height: 80px;
+        resize: vertical;
+        transition: border-color 0.3s;
+        font-family: inherit;
+    }
+    
+    .comment-form textarea:focus {
+        border-color: var(--primary-color);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    }
+    
+    .comment-actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .comment-submit-btn {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .comment-submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .comment-submit-btn i {
+        margin-right: 5px;
+    }
+    
+    .login-to-comment {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .login-to-comment a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .login-to-comment a:hover {
+        text-decoration: underline;
+    }
+    
+    .comments-list {
+        margin-top: 25px;
+    }
+    
+    .comment-item {
+        display: flex;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .comment-item:last-child {
+        border-bottom: none;
+    }
+    
+    .comment-content {
+        flex-grow: 1;
+    }
+    
+    .comment-header {
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .comment-author {
+        font-weight: 600;
+        color: #333;
+        margin-right: 10px;
+    }
+    
+    .comment-date {
+        font-size: 12px;
+        color: #777;
+    }
+    
+    .comment-text {
+        margin-bottom: 10px;
+        line-height: 1.5;
+        color: #333;
+    }
+    
+    .comment-actions .action-btn {
+        background: none;
+        border: none;
+        color: #666;
+        font-size: 13px;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: color 0.3s;
+        margin-right: 10px;
+    }
+    
+    .comment-actions .action-btn:hover {
+        color: var(--primary-color);
+    }
+    
+    .comment-actions .action-btn i {
+        margin-right: 5px;
+    }
+    
+    .no-comments {
+        text-align: center;
+        padding: 20px;
+        color: #777;
+        font-style: italic;
+    }
+    
+    .no-comments i {
+        margin-right: 5px;
+    }
+    
+    @media (max-width: 768px) {
+        .comments-header h2 {
+            font-size: 18px;
+        }
+        
+        .user-avatar, .comment-avatar {
+            width: 35px;
+            height: 35px;
+        }
+        
+        .comment-form textarea {
+            padding: 10px;
+        }
+        
+        .comment-submit-btn {
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+    }
+</style>
 {% endblock body %}
