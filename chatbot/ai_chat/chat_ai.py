@@ -5,9 +5,9 @@ import os
 
 
 
-# client = OpenAI(
-#   api_key = ''
-# )
+client = OpenAI(
+  api_key = "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"
+)
 
 #creating func----------------------------------------
 
