@@ -23,27 +23,27 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Home_Page' %}">Home</a>
+                        <a class="nav-link" href="{% url 'Home_Page' %}"><i class="fas fa-home lego-icon-home"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'About_Page' %}">About</a>
+                        <a class="nav-link" href="{% url 'About_Page' %}"><i class="fas fa-info-circle lego-icon-about"></i> About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog_list' %}">Blogs</a>
+                        <a class="nav-link" href="{% url 'blog_list' %}"><i class="fas fa-pen-fancy lego-icon-blog"></i> Blogs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+                        <a class="nav-link" href="{% url 'signup' %}"><i class="fas fa-user-plus"></i> Signup</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item logout-item">
                         <form method="post" action="{% url 'logout' %}" class="nav-form">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                            <button type="submit" class="btn btn-link nav-link"><i class="fas fa-sign-out-alt"></i> Logout</button>
                         </form>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
                     </li>
                     {% endif %}
                 </ul>

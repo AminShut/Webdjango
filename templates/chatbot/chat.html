@@ -21,7 +21,7 @@
         <form method="post" id="form-chat">
             {% csrf_token %}
             <div class="chat-input-wrapper">
-                {{ form }}
+                <input type="text" name="message" placeholder="Type your message..." required>
                 <button type="submit" id="button-send"></button>
             </div>
         </form>

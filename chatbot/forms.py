@@ -2,7 +2,7 @@ from django import forms
 
 class MessageForm(forms.Form):
     message = forms.CharField(
-        label='You',
+        label='',
         max_length=500,
-        widget=forms.Textarea(attrs={'placeholder': 'َAsk me anything...'})
+        widget=forms.TextInput(attrs={'placeholder': 'Type your message...', 'required': True})
     )
