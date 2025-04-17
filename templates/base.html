@@ -50,6 +50,12 @@
             </div>
         </div>
     </nav>
+    
+    {% if user.is_authenticated and request.path == '/' %}
+    <div class="header-welcome">
+        <span>Hi <span class='name-user'>{{user.username}}!</span>, welcome to our website</span>
+    </div>
+    {% endif %}
 
     <!-- Main Content -->
     <main class="container mt-5 pt-4 {% if 'chatbot' in request.path %}chatbot-main{% endif %}">

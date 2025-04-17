@@ -59,9 +59,10 @@ body.auth-page {
         radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.2) 0%, transparent 30%);
 }
 
-/* Main Content */
+/* Main Content - Normal margin */
 main {
     flex: 1;
+    padding-top: 2rem;
     padding-bottom: 2rem;
     background: rgba(255, 255, 255, 0.95);
     margin: 135px 20px 20px 20px;
@@ -71,6 +72,20 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1;
     position: relative;
+}
+
+/* Enable scrolling only for about page */
+body.about-body main {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 160px);
+    scrollbar-width: none; /* برای Firefox */
+    -ms-overflow-style: none; /* برای IE and Edge */
+}
+
+/* مخفی کردن اسکرول‌بار برای مرورگرهای بر پایه WebKit */
+body.about-body main::-webkit-scrollbar {
+    display: none;
 }
 
 Custom container padding .container {
@@ -187,14 +202,34 @@ Custom container padding .container {
     display: inline-block;
 }
 
-/* Icon colors */
+/* Icon colors - Blue for signup/login */
 .lego-icon-home,
 .lego-icon-about,
-.lego-icon-blog,
-.fas.fa-user-plus,
-.fas.fa-sign-in-alt {
+.lego-icon-blog {
     color: #333 !important;
     text-shadow: none;
+}
+
+.fas.fa-user-plus,
+.fas.fa-sign-in-alt {
+    color: var(--primary-color) !important;
+    text-shadow: none;
+}
+
+/* Login and Signup links - Blue */
+.nav-link[href*="signup"],
+.nav-link[href*="login"] {
+    color: var(--primary-color) !important;
+}
+
+.nav-link[href*="signup"]:hover,
+.nav-link[href*="login"]:hover {
+    color: #0056b3 !important;
+}
+
+.nav-link[href*="signup"]::after,
+.nav-link[href*="login"]::after {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
 }
 
 /* Logout icon color only */
@@ -274,11 +309,11 @@ Custom container padding .container {
     z-index: 1;
 }
 
-/* Auth Pages Styling */
+/* Auth Pages Styling - Compact size */
 .auth-container {
-    max-width: 500px;
+    max-width: 450px;
     margin: 2rem auto;
-    padding: 2.5rem;
+    padding: 2rem;
     background: rgba(255, 255, 255, 0.97);
     border-radius: 15px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
@@ -288,18 +323,18 @@ Custom container padding .container {
 
 .auth-title {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     background: var(--gradient-auth);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 0.5px;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .form-control {
@@ -319,7 +354,7 @@ Custom container padding .container {
     width: 100%;
     padding: 0.75rem;
     border-radius: 8px;
-    background: var(--gradient-auth);
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
     border: none;
     color: white;
     font-weight: 600;
@@ -328,7 +363,7 @@ Custom container padding .container {
 
 .btn-auth:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4) !important;
     color: white;
 }
 
@@ -338,13 +373,13 @@ Custom container padding .container {
 }
 
 .auth-links a {
-    color: #0072ff;
+    color: #007bff !important;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .auth-links a:hover {
-    color: #0056b3;
+    color: #0056b3 !important;
     text-decoration: underline;
 }
 
@@ -615,7 +650,7 @@ button[type="submit"]:not(#button-send):hover {
     padding: 40px 30px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0px 50px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-weight: 700;
     font-size: 42px;
@@ -631,7 +666,9 @@ body.about-body {
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
 }
 
 body.about-body::before {
@@ -643,48 +680,95 @@ body.about-body::before {
     z-index: 2;
 }
 
-/* Home page container */
+/* Main content for home page - Enable scrolling */
+body.home-page main {
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+    scrollbar-width: none; /* برای Firefox */
+    -ms-overflow-style: none; /* برای IE and Edge */
+}
+
+/* مخفی کردن اسکرول‌بار برای مرورگرهای بر پایه WebKit */
+body.home-page main::-webkit-scrollbar {
+    display: none;
+}
+
+/* Home page container modified */
 .home-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    width: 100%;
+    padding: 30px 0;
+}
+
+/* New welcome message directly in home container */
+.welcome-message {
+    display: block;
+    width: 50%;
+    max-width: 700px;
+    margin: 15px auto 8px;
+    text-align: center;
+    font-size: 20px;
+    padding: 15px 30px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 40px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.308);
+    border-left: 5px solid var(--primary-color);
+    border-right: 5px solid var(--primary-color);
+    order: 2;
+    position: relative;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+}
+
+.welcome-message:hover {
+    transform: translateY(-2px);
+}
+
+/* Username styling in welcome message */
+.welcome-message .username {
+    color: #007bff;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.welcome-message .username::after {
+    content: "!";
+    color: #ff7700;
+    margin-left: 1px;
+}
+
+/* Feature cards container - reduced spacing */
+.feature-cards-container {
+    order: 3;
+    margin-top: 5px;
     width: 100%;
 }
 
-/* Home page heading and welcome message order */
-.home-container .welcome {
-    order: -1;
-    margin-bottom: 30px;
+/* Original header welcome - still hidden */
+.header-welcome {
+    display: none !important;
 }
 
-/* Welcome section styling */
+/* Home page title - specify order */
+.home-about-page#home-page {
+    order: 1;
+}
+
+/* Welcome message - Below Home Page title */
 .welcome {
-    display: block;
-    text-align: center;
-    font-size: 24px;
-    margin: 0 auto 30px;
-    padding: 15px 30px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    width: fit-content;
-    color: #333;
-    font-weight: 500;
-    border-left: 4px solid var(--primary-color);
-    border-right: 4px solid var(--primary-color);
-    animation: fadeIn 0.5s ease-in-out;
+    display: none;
 }
 
+/* Remove special username styling */
 .name-user {
-    color: var(--primary-color);
-    font-weight: 700;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-weight: normal;
+    color: inherit;
 }
 
 /* All texts in blogs styling */
@@ -1094,7 +1178,7 @@ input[type="submit"].delete-Button-yes-and-no:hover {
     display: flex;
     justify-content: center;
     gap: 30px;
-    margin: 50px auto;
+    margin: 30px auto;
     flex-wrap: wrap;
     max-width: 1000px;
 }
@@ -1136,14 +1220,15 @@ input[type="submit"].delete-Button-yes-and-no:hover {
 }
 
 .feature-card-front {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     color: #333;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 3px solid var(--primary-color);
 }
 
 .feature-card-back {
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2575fc 100%);
     color: white;
     transform: rotateY(180deg);
 }
@@ -1154,6 +1239,8 @@ input[type="submit"].delete-Button-yes-and-no:hover {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
+    position: relative;
+    padding-top: 40px;
 }
 
 .feature-card-back p {
@@ -1162,50 +1249,156 @@ input[type="submit"].delete-Button-yes-and-no:hover {
     margin: 0;
 }
 
-/* Header welcome message - increased shadow */
-.header-welcome {
-    position: fixed;
-    top: 56px;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    z-index: 999;
-    padding: 15px 0;
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    font-size: 22px;
-    font-weight: 500;
-    color: #333;
+.feature-card:nth-child(1) .feature-card-front {
+    border-bottom-color: #f8d568;
+}
+
+.feature-card:nth-child(2) .feature-card-front {
+    border-bottom-color: #4fc3f7;
+}
+
+.feature-card:nth-child(3) .feature-card-front {
+    border-bottom-color: #66bb6a;
+}
+
+.feature-card:nth-child(1) .feature-card-back {
+    background: linear-gradient(135deg, #f8d568 0%, #e5c250 100%);
+}
+
+.feature-card:nth-child(2) .feature-card-back {
+    background: linear-gradient(135deg, #4fc3f7 0%, #3ba8d9 100%);
+}
+
+.feature-card:nth-child(3) .feature-card-back {
+    background: linear-gradient(135deg, #66bb6a 0%, #51a054 100%);
+}
+
+.feature-card:nth-child(1) .feature-card-front h3::before {
+    content: '\f303';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: #f8d568;
+}
+
+.feature-card:nth-child(2) .feature-card-front h3::before {
+    content: '\f075';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: #4fc3f7;
+}
+
+.feature-card:nth-child(3) .feature-card-front h3::before {
+    content: '\f0c0';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: #66bb6a;
+}
+
+/* Team Members Section */
+.team-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 50px auto;
+    max-width: 1000px;
 }
 
-.header-welcome span {
-    display: inline-block;
-    padding: 10px 30px;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    border-left: 5px solid var(--primary-color);
-    border-right: 5px solid var(--primary-color);
+.team-member {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-/* Lego-colored icons for nav links - ensuring visibility */
-.nav-link[href*="Home_Page"]::before,
-.nav-link[href*="About_Page"]::before,
-.nav-link[href*="blog_list"]::before {
-    content: none !important;
+.team-member:hover {
+    transform: translateY(-10px);
 }
 
-/* Lego-colored icons for navlinks - now with black color */
-.lego-icon-home,
-.lego-icon-about,
-.lego-icon-blog {
-    margin-right: 5px;
+.team-img-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.team-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.backend-dev {
+    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+    position: relative;
+}
+
+.backend-dev::before {
+    content: '\f085';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.frontend-dev {
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+    position: relative;
+}
+
+.frontend-dev::before {
+    content: '\f1fc';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.team-member h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.team-member h3 {
+    color: #6a11cb;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.team-member p {
+    color: #555;
     font-size: 16px;
-    display: inline-block;
-    color: #333 !important;
-    text-shadow: none;
+    line-height: 1.6;
 }
